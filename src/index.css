@@ -1,0 +1,10 @@
+nav {
+    border-bottom: solid;
+    border-color: black;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
