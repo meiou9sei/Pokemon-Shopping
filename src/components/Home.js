@@ -9,6 +9,8 @@ export default function Home() {
       </div>
       <p>
         we're a bit broke right now. can't afford graphic designer. or stock.
+      </p>
+      <p>
         that's why we're selling pokemon we catch outside the store. then we can
         afford to sell pokemon-care goods later
       </p>
