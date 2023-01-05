@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function Store() {
-  return <div>Store</div>;
+  return (
+    <section>
+      <h1>Pokemon for sell</h1>
+    </section>
+  );
 }
