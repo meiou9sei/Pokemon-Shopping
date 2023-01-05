@@ -4,11 +4,17 @@ import React from "react";
 export default function Navbar() {
   return (
     <nav>
-      <li>
-        <Link to='/'>Home</Link>
-        <Link to='/store'>Store</Link>
-        <Link to='/cart'>Cart</Link>
-      </li>
+      <ul>
+        <li>
+          <Link to='/'>Home</Link>
+        </li>
+        <li>
+          <Link to='/store'>Store</Link>
+        </li>
+        <li>
+          <Link to='/cart'>Cart</Link>
+        </li>
+      </ul>
     </nav>
   );
 }
