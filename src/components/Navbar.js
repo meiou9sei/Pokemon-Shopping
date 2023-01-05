@@ -4,6 +4,7 @@ import React from "react";
 export default function Navbar() {
   return (
     <nav>
+      <p>broke pokemart</p>
       <ul>
         <li>
           <Link to='/'>Home</Link>

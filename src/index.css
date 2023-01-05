@@ -1,10 +1,14 @@
 nav {
     border-bottom: solid;
     border-color: black;
+    margin-bottom: 24px;
+
+    display: flex;
+    justify-content: space-between;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    justify-content: space-around;
+    gap: 24px;
 }
