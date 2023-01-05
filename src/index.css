@@ -12,3 +12,12 @@ nav ul {
     list-style: none;
     gap: 24px;
 }
+
+footer {
+    margin-top: 24px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
