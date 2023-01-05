@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -10,9 +10,11 @@ function App() {
   return (
     <div className='App'>
       <Navbar />
-      <Home />
-      <Store />
-      <Cart />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/store' element={<Store />} />
+        <Route path='/cart' element={<Cart />} />
+      </Routes>
       <Footer />
     </div>
   );
