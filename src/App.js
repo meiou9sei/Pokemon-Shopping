@@ -10,7 +10,6 @@ import Footer from "./components/Footer";
 import storeInventory from "./storeInventory";
 
 function App() {
-  const [inventory, setInventory] = useState(storeInventory);
   const [cart, setCart] = useState([]);
 
   return (
@@ -20,7 +19,10 @@ function App() {
         <div className='page-wrapper'>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/store' element={<Store inventory={inventory} />} />
+            <Route
+              path='/store'
+              element={<Store inventory={storeInventory} />}
+            />
             <Route path='/cart' element={<Cart />} />
           </Routes>
         </div>
