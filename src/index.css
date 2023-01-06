@@ -1,8 +1,25 @@
+html, body, #root, .App, main {
+    height: 100%;
+    margin: 0;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
 nav {
     border-bottom: solid;
     border-color: black;
     margin-bottom: 24px;
+}
 
+.nav-content-wrapper {
+    margin: 0 24px;
     display: flex;
     justify-content: space-between;
 }
@@ -11,6 +28,10 @@ nav ul {
     display: flex;
     list-style: none;
     gap: 24px;
+}
+
+.page-wrapper {
+    margin: 0 8px;
 }
 
 .products-display {
@@ -51,10 +72,7 @@ nav ul {
 }
 
 footer {
-    margin-top: 24px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    margin-top: auto;
     width: 100%;
     text-align: center;
 }
