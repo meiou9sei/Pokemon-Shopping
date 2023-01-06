@@ -1,4 +1,4 @@
-html, body, #root, .App, main {
+html, body, #root, .App {
     height: 100%;
     margin: 0;
 }
@@ -72,7 +72,6 @@ nav ul {
 }
 
 footer {
-    margin-top: auto;
     width: 100%;
     text-align: center;
 }
