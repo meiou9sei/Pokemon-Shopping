@@ -4,7 +4,7 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Store from "./components/Store";
-import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
 import Footer from "./components/Footer";
 
 import useFetchInventory from "./useFetchInventory";
@@ -29,7 +29,7 @@ function App() {
                 />
               }
             />
-            <Route path='/cart' element={<Cart />} />
+            <Route path='/cart' element={<Checkout cart={cart} />} />
           </Routes>
         </div>
       </main>
