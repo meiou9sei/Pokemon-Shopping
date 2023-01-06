@@ -8,9 +8,20 @@ import Checkout from "./components/Checkout";
 import Footer from "./components/Footer";
 
 import useFetchInventory from "./useFetchInventory";
+import useCart from "./useCart";
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([
+    {
+      id: 1,
+      name: "bulbasaur",
+      image:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+      price: 187,
+      quantity: 7,
+    },
+  ]);
+  console.log(cart);
   const { isInventoryLoaded, storeInventory } = useFetchInventory();
 
   return (
@@ -26,10 +37,23 @@ function App() {
                 <Store
                   isInventoryLoaded={isInventoryLoaded}
                   inventory={storeInventory}
+                  cart={cart}
+                  setCart={setCart}
+                  useCart={useCart}
                 />
               }
             />
-            <Route path='/cart' element={<Checkout cart={cart} />} />
+            <Route
+              path='/cart'
+              element={
+                <Checkout
+                  cart={cart}
+                  cart={cart}
+                  setCart={setCart}
+                  useCart={useCart}
+                />
+              }
+            />
           </Routes>
         </div>
       </main>
