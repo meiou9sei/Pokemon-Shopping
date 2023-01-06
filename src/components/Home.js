@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Home() {
   return (
-    <div className='homepage'>
+    <section className='homepage'>
       <div className='hero'>
         <h1>Welcome to the (broke) Pokemart</h1>
         <p>your (future) store for all pokemon needs</p>
@@ -14,6 +14,6 @@ export default function Home() {
         that's why we're selling pokemon we catch outside the store. then we can
         afford to sell pokemon-care goods later
       </p>
-    </div>
+    </section>
   );
 }
