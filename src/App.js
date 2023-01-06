@@ -7,10 +7,11 @@ import Store from "./components/Store";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 
-import storeInventory from "./storeInventory";
+import useFetchInventory from "./useFetchInventory";
 
 function App() {
   const [cart, setCart] = useState([]);
+  const { isInventoryLoaded, storeInventory } = useFetchInventory();
 
   return (
     <div className='App'>
@@ -21,7 +22,12 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route
               path='/store'
-              element={<Store inventory={storeInventory} />}
+              element={
+                <Store
+                  isInventoryLoaded={isInventoryLoaded}
+                  inventory={storeInventory}
+                />
+              }
             />
             <Route path='/cart' element={<Cart />} />
           </Routes>
