@@ -1,4 +1,4 @@
-const inventory = [
+const storeInventory = [
   {
     name: "shiba inu",
     price: 299,
@@ -16,4 +16,4 @@ const inventory = [
   },
 ];
 
-export default inventory;
+export default storeInventory;
