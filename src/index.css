@@ -13,6 +13,43 @@ nav ul {
     gap: 24px;
 }
 
+.products-display {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.product-listing {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.product-listing * {
+    margin: 0;
+}
+
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.product-image {
+    align-self: center;
+    width: 200px;
+    min-height: 200px;
+    object-fit: cover;
+}
+
+.add-to-cart-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
 footer {
     margin-top: 24px;
     position: fixed;
