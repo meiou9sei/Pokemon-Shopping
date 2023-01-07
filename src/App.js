@@ -16,7 +16,6 @@ function App() {
 
   return (
     <div className='App'>
-      <div>In your cart: {JSON.stringify(cart)}</div>
       <main>
         <Navbar />
         <div className='page-wrapper'>
