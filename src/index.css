@@ -108,6 +108,12 @@ nav ul {
     align-self: center;
 }
 
+.checkout-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 footer {
     width: 100%;
     text-align: center;

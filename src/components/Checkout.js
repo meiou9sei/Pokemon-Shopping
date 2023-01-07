@@ -18,20 +18,25 @@ export default function Checkout({ cart, dispatch }) {
       <h1>Your Cart</h1>
       <p>here's all the pokemon you're gonna buy</p>
       <div className='checkout-cart'>
-        <h2>Order:</h2>
-        <ul>
-          {cart.length === 0 && <p>your cart is empty. go add some pokemon</p>}
-          {cart.length >= 1 &&
-            cart.map((product) => (
-              <CheckoutItem
-                key={product.id}
-                product={product}
-                dispatch={dispatch}
-                ACTIONS={ACTIONS}
-              />
-            ))}
-        </ul>
-        <h2>Total Price: ${totalPrice}</h2>
+        <h2>Order summary:</h2>
+        {(cart.length >= 1 && (
+          <div className='active-cart'>
+            <ul>
+              {cart.map((product) => (
+                <CheckoutItem
+                  key={product.id}
+                  product={product}
+                  dispatch={dispatch}
+                  ACTIONS={ACTIONS}
+                />
+              ))}
+            </ul>
+            <div className='checkout-bottom'>
+              <h2>Order total: ${totalPrice}</h2>
+              <button>Place your order</button>
+            </div>
+          </div>
+        )) || <p>your cart is empty. go add some pokemon</p>}
       </div>
     </section>
   );
