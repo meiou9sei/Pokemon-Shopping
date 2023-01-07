@@ -1,4 +1,5 @@
 import { ACTIONS } from "../cartLogic";
+import CheckoutItem from "./CheckoutItem";
 
 export default function Checkout({ cart, dispatch }) {
   return (
@@ -9,28 +10,12 @@ export default function Checkout({ cart, dispatch }) {
         {cart.length === 0 && <p>your cart is empty. go add some pokemon</p>}
         {cart.length >= 1 &&
           cart.map((product) => (
-            <li key={product.id} className='cart-item'>
-              <h2 className='cart-item-name'>{product.name}</h2>
-              <img
-                src={product.image}
-                alt={product.name}
-                className='cart-item-image'
-              />
-              <p>
-                {product.quantity} at ${product.price} each
-              </p>
-              <button
-                className='remove-item-button'
-                onClick={() =>
-                  dispatch({
-                    type: ACTIONS.REMOVE_ITEM,
-                    payload: { product },
-                  })
-                }
-              >
-                Remove Item
-              </button>
-            </li>
+            <CheckoutItem
+              key={product.id}
+              product={product}
+              dispatch={dispatch}
+              ACTIONS={ACTIONS}
+            />
           ))}
       </ul>
     </section>
