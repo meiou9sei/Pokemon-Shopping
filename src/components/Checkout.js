@@ -1,6 +1,6 @@
-import React from "react";
+import { ACTIONS } from "../cartLogic";
 
-export default function Checkout({ cart }) {
+export default function Checkout({ cart, dispatch }) {
   return (
     <section>
       <h1>Your Cart</h1>
@@ -19,7 +19,17 @@ export default function Checkout({ cart }) {
               <p>
                 {item.quantity} at ${item.price} each
               </p>
-              <button className='remove-item-button'>Remove Item</button>
+              <button
+                className='remove-item-button'
+                onClick={() =>
+                  dispatch({
+                    type: ACTIONS.REMOVE_ITEM,
+                    payload: { item },
+                  })
+                }
+              >
+                Remove Item
+              </button>
             </li>
           ))}
       </ul>

@@ -11,22 +11,22 @@ import useFetchInventory from "./useFetchInventory";
 import reducer from "./cartLogic";
 
 function App() {
-  const [ghostCart, dispatch] = useReducer(reducer, []);
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      name: "bulbasaur",
-      image:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-      price: 187,
-      quantity: 7,
-    },
-  ]);
+  const [cart, dispatch] = useReducer(reducer, []);
+  // const [cart, setCart] = useState([
+  //   {
+  //     id: 1,
+  //     name: "bulbasaur",
+  //     image:
+  //       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+  //     price: 187,
+  //     quantity: 7,
+  //   },
+  // ]);
   const { isInventoryLoaded, storeInventory } = useFetchInventory();
 
   return (
     <div className='App'>
-      <div>In your cart: {JSON.stringify(ghostCart)}</div>
+      <div>In your cart: {JSON.stringify(cart)}</div>
       <main>
         <Navbar />
         <div className='page-wrapper'>
@@ -39,15 +39,11 @@ function App() {
                   isInventoryLoaded={isInventoryLoaded}
                   inventory={storeInventory}
                   cart={cart}
-                  setCart={setCart}
                   dispatch={dispatch}
                 />
               }
             />
-            <Route
-              path='/cart'
-              element={<Checkout cart={cart} setCart={setCart} />}
-            />
+            <Route path='/cart' element={<Checkout cart={cart} />} />
           </Routes>
         </div>
       </main>

@@ -4,10 +4,13 @@ export const ACTIONS = {
 };
 
 export default function reducer(state, action) {
+  let newProductId = action.payload.product.id;
+  let newProductName = action.payload.product.name;
+  let newProductImage = action.payload.product.image;
+  let newProductPrice = action.payload.product.price;
+  let newQuantity = action.payload.amountToAdd;
   switch (action.type) {
     case ACTIONS.ADD_ITEM:
-      let newQuantity = action.payload.amountToAdd;
-      let newProductId = action.payload.product.id;
       // check if item already exists in cart
       let checkIndex = state.findIndex((item) => item.id === newProductId);
       // if item doesn't exist, create new item
@@ -16,6 +19,9 @@ export default function reducer(state, action) {
           ...state,
           {
             id: newProductId,
+            name: newProductName,
+            image: newProductImage,
+            price: newProductPrice,
             quantity: newQuantity,
           },
         ];
@@ -24,11 +30,17 @@ export default function reducer(state, action) {
       newQuantity += state[checkIndex].quantity;
       return state.map((item) =>
         item.id === newProductId
-          ? { id: newProductId, quantity: newQuantity }
+          ? {
+              id: newProductId,
+              name: newProductName,
+              image: newProductImage,
+              price: newProductPrice,
+              quantity: newQuantity,
+            }
           : item
       );
     case ACTIONS.REMOVE_ITEM:
-      return state - 1;
+      return state.filter((item) => item.id !== newProductId);
     default:
       return state;
   }
