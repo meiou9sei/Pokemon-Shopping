@@ -15,9 +15,30 @@ export const ACTIONS = {
 };
 
 function reducer(state, action) {
+  // console.log(action);
   switch (action.type) {
     case ACTIONS.ADD_ITEM:
-      return [...state, newItem(action.payload)];
+      let newQuantity = action.payload.amountToAdd;
+      let newProductId = action.payload.product.id;
+      // check if item already exists in cart
+      let checkIndex = state.findIndex((item) => item.id === newProductId);
+      // if item doesn't exist, create new item
+      if (checkIndex === -1) {
+        return [
+          ...state,
+          {
+            id: newProductId,
+            quantity: newQuantity,
+          },
+        ];
+      }
+      // else, update new quantity value and return new state
+      newQuantity += state[checkIndex].quantity;
+      return state.map((item) =>
+        item.id === newProductId
+          ? { id: newProductId, quantity: newQuantity }
+          : item
+      );
     case ACTIONS.REMOVE_ITEM:
       return state - 1;
     default:
@@ -26,7 +47,7 @@ function reducer(state, action) {
 }
 
 function newItem(payload) {
-  return { id: payload.id, name: payload.name };
+  return { id: payload.product.id, quantity: payload.amountToAdd };
 }
 
 function App() {
@@ -45,7 +66,7 @@ function App() {
 
   return (
     <div className='App'>
-      <div>{JSON.stringify(ghostCart)}</div>
+      <div>In your cart: {JSON.stringify(ghostCart)}</div>
       <main>
         <Navbar />
         <div className='page-wrapper'>

@@ -21,7 +21,12 @@ export default function ProductDisplay({ product, dispatch }) {
       <div className='add-to-cart-menu'>
         <button
           className='add-to-cart-button'
-          onClick={() => dispatch({ type: ACTIONS.ADD_ITEM, payload: product })}
+          onClick={() =>
+            dispatch({
+              type: ACTIONS.ADD_ITEM,
+              payload: { product, amountToAdd },
+            })
+          }
         >
           Add to cart
         </button>
