@@ -1,4 +1,4 @@
-live demo: (to be added)
+live demo: http://meiou9sei.github.io/TOP-shopping-cart
 
 shopping cart as part of TOP curriculum
 
