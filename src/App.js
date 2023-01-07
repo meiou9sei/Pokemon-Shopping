@@ -21,7 +21,6 @@ function App() {
       quantity: 7,
     },
   ]);
-  console.log(cart);
   const { isInventoryLoaded, storeInventory } = useFetchInventory();
 
   return (
