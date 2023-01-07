@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ACTIONS } from "../App";
+import { ACTIONS } from "../cartLogic";
 
 export default function ProductDisplay({ product, dispatch }) {
   const [amountToAdd, setAmountToAdd] = useState(1);
