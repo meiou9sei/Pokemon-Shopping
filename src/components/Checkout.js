@@ -3,15 +3,34 @@ import { ACTIONS } from "../cartLogic";
 import CheckoutItem from "./CheckoutItem";
 
 export default function Checkout({ cart, dispatch }) {
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(calculateTotalPrice());
   useEffect(() => {
-    const newTotalPrice = cart.reduce(
-      (accumulator, currentValue) =>
-        accumulator + currentValue.price * currentValue.quantity,
-      0
-    );
-    setTotalPrice(newTotalPrice);
+    if (!isOrderPlaced) {
+      const newTotalPrice = calculateTotalPrice();
+      setTotalPrice(newTotalPrice);
+    }
   }, [cart]);
+  function calculateTotalPrice() {
+    const newTotalPrice = () =>
+      cart.reduce(
+        (accumulator, currentValue) =>
+          accumulator + currentValue.price * currentValue.quantity,
+        0
+      );
+    return newTotalPrice;
+  }
+  const [isOrderPlaced, setIsOrderPlaced] = useState(true);
+  // set isOrderPlaced to false each time checkout loaded
+  useEffect(() => {
+    setIsOrderPlaced(false);
+  }, []);
+  const placeOrder = () => {
+    setIsOrderPlaced(true);
+    dispatch({
+      type: ACTIONS.CLEAR_CART,
+      payload: {},
+    });
+  };
 
   return (
     <section>
@@ -33,10 +52,15 @@ export default function Checkout({ cart, dispatch }) {
             </ul>
             <div className='checkout-bottom'>
               <h2>Order total: ${totalPrice}</h2>
-              <button>Place your order</button>
+              <button onClick={placeOrder}>Place your order</button>
             </div>
           </div>
-        )) || <p>your cart is empty. go add some pokemon</p>}
+        )) ||
+          (isOrderPlaced && (
+            <p>
+              sorry we take cash only, please buy at our physical location 💀
+            </p>
+          )) || <p>your cart is empty. go add some pokemon</p>}
       </div>
     </section>
   );
