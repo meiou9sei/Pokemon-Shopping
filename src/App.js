@@ -12,16 +12,6 @@ import reducer from "./cartLogic";
 
 function App() {
   const [cart, dispatch] = useReducer(reducer, []);
-  // const [cart, setCart] = useState([
-  //   {
-  //     id: 1,
-  //     name: "bulbasaur",
-  //     image:
-  //       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-  //     price: 187,
-  //     quantity: 7,
-  //   },
-  // ]);
   const { isInventoryLoaded, storeInventory } = useFetchInventory();
 
   return (
