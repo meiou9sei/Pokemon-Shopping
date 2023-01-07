@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TOP-shopping-cart/static/css/main.a6b4e200.css",
+    "main.js": "/TOP-shopping-cart/static/js/main.f7c2050a.js",
+    "index.html": "/TOP-shopping-cart/index.html",
+    "main.a6b4e200.css.map": "/TOP-shopping-cart/static/css/main.a6b4e200.css.map",
+    "main.f7c2050a.js.map": "/TOP-shopping-cart/static/js/main.f7c2050a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a6b4e200.css",
+    "static/js/main.f7c2050a.js"
+  ]
+}
