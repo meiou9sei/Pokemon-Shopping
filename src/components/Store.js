@@ -8,7 +8,9 @@ export default function Store({ isInventoryLoaded, inventory }) {
       <ul className='products-display'>
         {!isInventoryLoaded && <div>loading...</div>}
         {isInventoryLoaded &&
-          inventory.map((product) => <ProductDisplay product={product} />)}
+          inventory.map((product) => (
+            <ProductDisplay key={product.id} product={product} />
+          ))}
       </ul>
     </section>
   );

@@ -10,7 +10,7 @@ export default function ProductDisplay({ product }) {
     setAmountToAdd((prevCount) => (prevCount <= 1 ? prevCount : prevCount - 1));
   }
   return (
-    <li key={product.id} className='product-listing'>
+    <li className='product-listing'>
       {" "}
       <div className='product-header'>
         <h2 className='product-name'>{product.name}</h2>
