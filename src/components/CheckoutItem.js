@@ -1,7 +1,7 @@
 export default function CheckoutItem({ product, dispatch, ACTIONS }) {
   return (
     <li className='cart-item'>
-      <h2 className='cart-item-name'>{product.name}</h2>
+      <h3 className='cart-item-name'>{product.name}</h3>
       <img src={product.image} alt={product.name} className='cart-item-image' />
       <p>
         {product.quantity} at ${product.price} each
