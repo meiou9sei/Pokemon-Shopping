@@ -4,7 +4,6 @@ export const ACTIONS = {
 };
 
 export default function reducer(state, action) {
-  // console.log(action);
   switch (action.type) {
     case ACTIONS.ADD_ITEM:
       let newQuantity = action.payload.amountToAdd;
