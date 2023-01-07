@@ -1,7 +1,7 @@
 import React from "react";
 import ProductDisplay from "./ProductDisplay";
 
-export default function Store({ isInventoryLoaded, inventory }) {
+export default function Store({ isInventoryLoaded, inventory, dispatch }) {
   return (
     <section>
       <h1>Pokemon for sell</h1>
@@ -9,7 +9,11 @@ export default function Store({ isInventoryLoaded, inventory }) {
         {!isInventoryLoaded && <div>loading...</div>}
         {isInventoryLoaded &&
           inventory.map((product) => (
-            <ProductDisplay key={product.id} product={product} />
+            <ProductDisplay
+              key={product.id}
+              product={product}
+              dispatch={dispatch}
+            />
           ))}
       </ul>
     </section>

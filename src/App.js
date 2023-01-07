@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -8,9 +8,29 @@ import Checkout from "./components/Checkout";
 import Footer from "./components/Footer";
 
 import useFetchInventory from "./useFetchInventory";
-import useCart from "./useCart";
+
+export const ACTIONS = {
+  ADD_ITEM: "addItem",
+  REMOVE_ITEM: "removeItem",
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case ACTIONS.ADD_ITEM:
+      return [...state, newItem(action.payload)];
+    case ACTIONS.REMOVE_ITEM:
+      return state - 1;
+    default:
+      return state;
+  }
+}
+
+function newItem(payload) {
+  return { id: payload.id, name: payload.name };
+}
 
 function App() {
+  const [ghostCart, dispatch] = useReducer(reducer, []);
   const [cart, setCart] = useState([
     {
       id: 1,
@@ -25,6 +45,7 @@ function App() {
 
   return (
     <div className='App'>
+      <div>{JSON.stringify(ghostCart)}</div>
       <main>
         <Navbar />
         <div className='page-wrapper'>
@@ -38,20 +59,13 @@ function App() {
                   inventory={storeInventory}
                   cart={cart}
                   setCart={setCart}
-                  useCart={useCart}
+                  dispatch={dispatch}
                 />
               }
             />
             <Route
               path='/cart'
-              element={
-                <Checkout
-                  cart={cart}
-                  cart={cart}
-                  setCart={setCart}
-                  useCart={useCart}
-                />
-              }
+              element={<Checkout cart={cart} setCart={setCart} />}
             />
           </Routes>
         </div>

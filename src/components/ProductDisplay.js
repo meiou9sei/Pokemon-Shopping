@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { ACTIONS } from "../App";
 
-export default function ProductDisplay({ product }) {
+export default function ProductDisplay({ product, dispatch }) {
   const [amountToAdd, setAmountToAdd] = useState(1);
   function incrementCount() {
     setAmountToAdd((prevCount) => prevCount + 1);
@@ -18,7 +19,12 @@ export default function ProductDisplay({ product }) {
       </div>
       <img src={product.image} alt={product.name} className='product-image' />
       <div className='add-to-cart-menu'>
-        <button className='add-to-cart-button'>Add to cart</button>
+        <button
+          className='add-to-cart-button'
+          onClick={() => dispatch({ type: ACTIONS.ADD_ITEM, payload: product })}
+        >
+          Add to cart
+        </button>
         <div className='amount-to-add'>
           <button className='less' onClick={decrementCount}>
             -
