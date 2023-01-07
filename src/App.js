@@ -33,7 +33,10 @@ function App() {
                 />
               }
             />
-            <Route path='/cart' element={<Checkout cart={cart} />} />
+            <Route
+              path='/cart'
+              element={<Checkout cart={cart} dispatch={dispatch} />}
+            />
           </Routes>
         </div>
       </main>

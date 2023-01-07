@@ -8,23 +8,23 @@ export default function Checkout({ cart, dispatch }) {
       <ul className='checkout-cart'>
         {cart.length === 0 && <p>your cart is empty. go add some pokemon</p>}
         {cart.length >= 1 &&
-          cart.map((item) => (
-            <li key={item.id} className='cart-item'>
-              <h2 className='cart-item-name'>{item.name}</h2>
+          cart.map((product) => (
+            <li key={product.id} className='cart-item'>
+              <h2 className='cart-item-name'>{product.name}</h2>
               <img
-                src={item.image}
-                alt={item.name}
+                src={product.image}
+                alt={product.name}
                 className='cart-item-image'
               />
               <p>
-                {item.quantity} at ${item.price} each
+                {product.quantity} at ${product.price} each
               </p>
               <button
                 className='remove-item-button'
                 onClick={() =>
                   dispatch({
                     type: ACTIONS.REMOVE_ITEM,
-                    payload: { item },
+                    payload: { product },
                   })
                 }
               >
