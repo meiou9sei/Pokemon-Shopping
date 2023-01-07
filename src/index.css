@@ -10,12 +10,16 @@ html, body, #root, .App {
 
 main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 nav {
     border-bottom: solid;
     border-color: black;
     margin-bottom: 24px;
+    width: 100%;
 }
 
 .nav-content-wrapper {
@@ -32,6 +36,8 @@ nav ul {
 
 .page-wrapper {
     margin: 0 8px;
+    width: 75%;
+    max-width: 1920px;
 }
 
 .products-display {
@@ -69,6 +75,43 @@ nav ul {
 .add-to-cart-menu {
     display: flex;
     justify-content: space-between;
+}
+
+.checkout-cart {
+    border: solid;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    width: 500px;
+}
+
+.cart-item {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.cart-item-header {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-image {
+    width: 50px;
+    max-height: 50px;
+    object-fit: cover;
+}
+
+.remove-item-button {
+    margin-left: auto;
+    align-self: center;
+}
+
+.checkout-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 footer {

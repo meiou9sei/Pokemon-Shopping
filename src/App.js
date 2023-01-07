@@ -1,16 +1,17 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Store from "./components/Store";
-import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
 import Footer from "./components/Footer";
 
 import useFetchInventory from "./useFetchInventory";
+import reducer from "./cartLogic";
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, dispatch] = useReducer(reducer, []);
   const { isInventoryLoaded, storeInventory } = useFetchInventory();
 
   return (
@@ -26,10 +27,15 @@ function App() {
                 <Store
                   isInventoryLoaded={isInventoryLoaded}
                   inventory={storeInventory}
+                  cart={cart}
+                  dispatch={dispatch}
                 />
               }
             />
-            <Route path='/cart' element={<Cart />} />
+            <Route
+              path='/cart'
+              element={<Checkout cart={cart} dispatch={dispatch} />}
+            />
           </Routes>
         </div>
       </main>
