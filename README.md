@@ -1,19 +1,18 @@
 # Pokemon Shopping site
 
-Live demo: http://meiou9sei.github.io/Pokemon-Shopping
+Live demo: [I need to set this up later]
 
 ## Tech
 
-- HTML & CSS (CSS Animations)
-- SASS
+- HTML & CSS
 - Javascript
 - React
 - React Router v6
 
 ## About
 
-Initially built as part of the [TOP Curriculum](https://www.theodinproject.com/lessons/node-path-javascript-shopping-cart) as a simple React Router practice app, later repurposed to improve my CSS Animations capabilities with a focus on beautiful animations, responsive design, and improved user experience.
+Built as part of the [TOP Curriculum](https://www.theodinproject.com/lessons/node-path-javascript-shopping-cart) as a simple React Router practice app
 
-## Highlights
+Minimal CSS look and humor inspired by [bscottnz's](https://github.com/bscottnz/react-router-shopping-cart) [Squares R Us](https://bscottnz.github.io/react-router-shopping-cart/#/)
 
-[This section will be filled in after the app is complete]
+Checkout the main branch (master) or https://meiou9sei.github.io/Pokemon-Shopping for the more fancy version of the store
