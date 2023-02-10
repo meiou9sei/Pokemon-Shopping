@@ -2,10 +2,9 @@
 
 Live demo: http://meiou9sei.github.io/Pokemon-Shopping
 
-## Skills
+## Tech
 
-- HTML & CSS
-- CSS Animations
+- HTML & CSS (CSS Animations)
 - SASS
 - Javascript
 - React
