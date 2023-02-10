@@ -2,7 +2,7 @@
 
 Live demo: http://meiou9sei.github.io/Pokemon-Shopping
 
-## Tech
+## Skills
 
 - HTML & CSS
 - CSS Animations
