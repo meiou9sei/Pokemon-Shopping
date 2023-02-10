@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/TOP-shopping-cart/static/css/main.a6b4e200.css",
-    "main.js": "/TOP-shopping-cart/static/js/main.9375010c.js",
-    "index.html": "/TOP-shopping-cart/index.html",
-    "main.a6b4e200.css.map": "/TOP-shopping-cart/static/css/main.a6b4e200.css.map",
-    "main.9375010c.js.map": "/TOP-shopping-cart/static/js/main.9375010c.js.map"
+    "main.css": "/Pokemon-Shopping/static/css/main.a6b4e200.css",
+    "main.js": "/Pokemon-Shopping/static/js/main.9375010c.js",
+    "index.html": "/Pokemon-Shopping/index.html",
+    "main.a6b4e200.css.map": "/Pokemon-Shopping/static/css/main.a6b4e200.css.map",
+    "main.9375010c.js.map": "/Pokemon-Shopping/static/js/main.9375010c.js.map"
   },
   "entrypoints": [
     "static/css/main.a6b4e200.css",
