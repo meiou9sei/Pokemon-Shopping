@@ -21,8 +21,7 @@ const pokemonTypes = [
   "water",
 ];
 
-export const StoreFilter = () => {
-  const [checkedTypes, setCheckedTypes] = useState([]);
+export const StoreFilter = ({ checkedTypes, setCheckedTypes }) => {
   const [disableTypeCheckboxes, setDisableTypeCheckboxes] = useState(false);
   // keeps track of what types are checked
   const handleCheck = (e) => {
