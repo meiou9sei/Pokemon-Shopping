@@ -30,11 +30,18 @@ export const StoreFilter = ({ filter, setFilter }) => {
       : setFilter({ ...filter, type: "" });
   };
 
+  const clearFilters = () => {
+    setFilter({});
+  };
+
   return (
     <div className='store-filter'>
       <h2>Filters</h2>
       <h3>Type</h3>
-      <ul className='types-container'>
+      <div className='subfilter'>
+        <button onClick={clearFilters}>Clear filters</button>
+      </div>
+      <ul className='subfilter'>
         {pokemonTypes.map((type) => (
           <li
             key={type}
