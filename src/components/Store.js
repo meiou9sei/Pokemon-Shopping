@@ -39,14 +39,15 @@ export default function Store({ isInventoryLoaded, inventory, dispatch }) {
         <StoreFilter filter={filter} setFilter={setFilter} />
         <ul className='products-display'>
           {!isInventoryLoaded && <div>loading...</div>}
-          {isInventoryLoaded &&
+          {(isInventoryLoaded &&
+            inventoryToDisplay.length > 0 &&
             inventoryToDisplay.map((product) => (
               <ProductDisplay
                 key={product.id}
                 product={product}
                 dispatch={dispatch}
               />
-            ))}
+            ))) || <p>Pokemon of that category is currently unavailable</p>}
         </ul>
       </div>
     </section>
