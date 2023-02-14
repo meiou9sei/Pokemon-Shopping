@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const pokemonTypes = [
   "bug",
@@ -24,8 +24,9 @@ const pokemonTypes = [
 export const StoreFilter = ({ filter, setFilter }) => {
   // keeps track of what types are checked
   const handleTypeFilterSelect = (e) => {
-    filter.type !== e.target.value
-      ? setFilter({ ...filter, type: e.target.value })
+    const type = e.target.value;
+    filter.type !== type
+      ? setFilter({ ...filter, type })
       : setFilter({ ...filter, type: "" });
   };
 
@@ -35,7 +36,12 @@ export const StoreFilter = ({ filter, setFilter }) => {
       <h3>Type</h3>
       <ul className='types-container'>
         {pokemonTypes.map((type) => (
-          <li key={type} className={`type-input ${type}`}>
+          <li
+            key={type}
+            className={`type-input ${type} ${
+              filter.type == type ? "activeFilter" : "inactiveFilter"
+            }`}
+          >
             <button type='button' value={type} onClick={handleTypeFilterSelect}>
               {type}
             </button>
