@@ -47,7 +47,9 @@ export default function Store({ isInventoryLoaded, inventory, dispatch }) {
                   product={product}
                   dispatch={dispatch}
                 />
-              ))) || <p>Pokemon of that category is currently unavailable</p>}
+              ))) || (
+              <p>Pokemon of specified filter(s) currently unavailable.</p>
+            )}
         </ul>
       </div>
     </section>
