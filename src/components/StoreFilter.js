@@ -21,42 +21,28 @@ const pokemonTypes = [
   "water",
 ];
 
-export const StoreFilter = ({ checkedTypes, setCheckedTypes }) => {
-  const [disableTypeCheckboxes, setDisableTypeCheckboxes] = useState(false);
+export const StoreFilter = ({ filter, setFilter }) => {
   // keeps track of what types are checked
-  const handleCheck = (e) => {
-    const typeToCheck = e.target.name;
-    setCheckedTypes((prevState) => {
-      if (prevState.includes(typeToCheck)) {
-        return [...prevState.filter((type) => type !== typeToCheck)];
-      } else return [...prevState, e.target.name];
-    });
+  const handleFilterSelect = (e) => {
+    filter.type !== e.target.value
+      ? setFilter({ ...filter, type: e.target.value })
+      : setFilter({ ...filter, type: "" });
   };
-  // limit to max 2 types selectable in filter
-  useEffect(() => {
-    if (checkedTypes.length >= 2) {
-      setDisableTypeCheckboxes(true);
-    } else setDisableTypeCheckboxes(false);
-  }, [checkedTypes]);
 
   return (
     <div className='store-filter'>
       <h2>Filters</h2>
       <h3>Type</h3>
-      <div className='types-container'>
+      <h4>filter is {filter.type}</h4>
+      <ul className='types-container'>
         {pokemonTypes.map((type) => (
-          <div key={type} className='type-input'>
-            <input
-              type='checkbox'
-              name={`${type}`}
-              id={`${type}`}
-              onChange={handleCheck}
-              disabled={!checkedTypes.includes(type) && disableTypeCheckboxes}
-            />
-            <label htmlFor={type}>{type}</label>
-          </div>
+          <li key={type} className='type-input'>
+            <button type='button' value={type} onClick={handleFilterSelect}>
+              {type}
+            </button>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
