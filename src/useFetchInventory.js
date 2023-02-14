@@ -45,6 +45,7 @@ const useFetchInventory = () => {
       name: data.name,
       image: data.sprites.other["official-artwork"].front_default,
       price: Math.floor(Math.random() * 999),
+      type: [...data.types.map((index) => index.type.name)],
     };
     return dataObj;
   }
