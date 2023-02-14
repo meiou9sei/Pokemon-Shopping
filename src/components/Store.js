@@ -38,7 +38,7 @@ export default function Store({ isInventoryLoaded, inventory, dispatch }) {
       <div className='store-display'>
         <StoreFilter filter={filter} setFilter={setFilter} />
         <ul className='products-display'>
-          {!isInventoryLoaded && <div>loading...</div>}
+          {!isInventoryLoaded && <p>loading...</p>}
           {(isInventoryLoaded &&
             inventoryToDisplay.length > 0 &&
             inventoryToDisplay.map((product) => (
