@@ -33,7 +33,6 @@ export const StoreFilter = ({ filter, setFilter }) => {
     <div className='store-filter'>
       <h2>Filters</h2>
       <h3>Type</h3>
-      <h4>filter is {filter.type}</h4>
       <ul className='types-container'>
         {pokemonTypes.map((type) => (
           <li key={type} className='type-input'>
