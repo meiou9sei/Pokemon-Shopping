@@ -84,6 +84,12 @@ nav ul {
   justify-content: space-between;
 }
 
+.pagination-container {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+}
+
 .checkout-cart {
   border: solid;
   display: flex;

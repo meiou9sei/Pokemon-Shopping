@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import ProductDisplay from "./ProductDisplay";
 import { StoreFilter } from "./StoreFilter";
+import { Pagination } from "./Pagination";
+
+let PageSize = 10;
 
 export default function Store({ isInventoryLoaded, inventory, dispatch }) {
+  // filtering
   const [filter, setFilter] = useState({});
-  const [inventoryToDisplay, setInventoryToDisplay] = useState(inventory);
+  const [filteredInventory, setFilteredInventory] = useState(inventory);
   useEffect(
     function filterInventoryDisplay() {
       let filterExists = false;
@@ -15,9 +19,9 @@ export default function Store({ isInventoryLoaded, inventory, dispatch }) {
         }
       }
 
-      let filteredInventory = inventory;
+      let newFilteredInventory = inventory;
       if (filterExists) {
-        filteredInventory = inventory.filter((product) => {
+        newFilteredInventory = inventory.filter((product) => {
           for (const property in filter) {
             if (filter[property]) {
               return product[property].includes(filter[property]);
@@ -25,23 +29,32 @@ export default function Store({ isInventoryLoaded, inventory, dispatch }) {
           }
         });
       }
-      setInventoryToDisplay(filteredInventory);
+      setFilteredInventory(newFilteredInventory);
     },
     [isInventoryLoaded, filter]
   );
+
+  // pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const currentPageData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return filteredInventory.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, filteredInventory]);
 
   return (
     <section>
       <div className='store-header'>
         <h1>Pokemon for sell</h1>
       </div>
+      <h2>current page: {currentPage}</h2>
       <div className='store-display'>
         <StoreFilter filter={filter} setFilter={setFilter} />
         <ul className='products-display'>
           {(!isInventoryLoaded && <p>loading...</p>) ||
             (isInventoryLoaded &&
-              inventoryToDisplay.length > 0 &&
-              inventoryToDisplay.map((product) => (
+              filteredInventory.length > 0 &&
+              currentPageData.map((product) => (
                 <ProductDisplay
                   key={product.id}
                   product={product}
@@ -51,6 +64,13 @@ export default function Store({ isInventoryLoaded, inventory, dispatch }) {
               <p>Pokemon of specified filter(s) currently unavailable.</p>
             )}
         </ul>
+        <Pagination
+          className='pagination-bar'
+          currentPage={currentPage}
+          totalCount={filteredInventory.length}
+          pageSize={PageSize}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
       </div>
     </section>
   );

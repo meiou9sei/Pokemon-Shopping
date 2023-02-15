@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const CURRMAXPOKEMON = 1008;
-const AMOUNTTOFETCH = 40;
+const AMOUNTTOFETCH = 151;
 
 const useFetchInventory = () => {
   const [storeInventory, setStoreInventory] = useState([]);
