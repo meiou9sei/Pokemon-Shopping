@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";

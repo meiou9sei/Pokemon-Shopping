@@ -17,3 +17,7 @@ Initially built as part of the [TOP Curriculum](https://www.theodinproject.com/l
 ## Highlights
 
 [This section will be filled in after the app is complete]
+
+## Notes
+
+currently limited to first 151 pokemon while I create my own JSON for pokemon (requesting data on 1008 pokemon to pokeapi takes wayyy too long for what I need)
