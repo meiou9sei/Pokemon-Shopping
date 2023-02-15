@@ -33,7 +33,7 @@ const useFetchInventory = () => {
     return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
   }
 
-  // fetches random pokemon name and image
+  // fetches pokemon name and image
   async function fetchPokemon(pokemonId) {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
     if (!res.ok) {
