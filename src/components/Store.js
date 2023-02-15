@@ -30,6 +30,7 @@ export default function Store({ isInventoryLoaded, inventory, dispatch }) {
         });
       }
       setFilteredInventory(newFilteredInventory);
+      setCurrentPage(1);
     },
     [isInventoryLoaded, filter]
   );
