@@ -1,36 +1,24 @@
 import { useState, useEffect } from "react";
 
-const MAXPOKEMON = 905;
-const AMOUNTTOFETCH = 20;
+const CURRMAXPOKEMON = 1008;
+const AMOUNTTOFETCH = 40;
 
 const useFetchInventory = () => {
   const [storeInventory, setStoreInventory] = useState([]);
+  const [isInventoryLoaded, setIsInventoryLoaded] = useState(false);
+
   useEffect(function fetchInventory() {
     fetchData(AMOUNTTOFETCH);
   }, []);
-  const [isInventoryLoaded, setIsInventoryLoaded] = useState(false);
 
   async function fetchData(amountToFetch) {
     const dataArray = [];
-    const usedPokemon = [];
-    for (let i = 0; i < amountToFetch; i++) {
-      let pokemonId = getRandomIntInclusive(1, MAXPOKEMON);
-      // prevents duplicates
-      while (usedPokemon.includes(pokemonId)) {
-        pokemonId = getRandomIntInclusive(1, MAXPOKEMON);
-      }
-      usedPokemon.push(pokemonId);
+    for (let pokemonId = 1; pokemonId < amountToFetch + 1; pokemonId++) {
       const data = await fetchPokemon(pokemonId);
       dataArray.push(data);
     }
     setStoreInventory(dataArray);
     setIsInventoryLoaded(true);
-  }
-
-  function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
   }
 
   // fetches pokemon name and image
