@@ -38,7 +38,13 @@ export const Pagination = ({
   return (
     <ul className='pagination-container'>
       <li className='pagination-item' onClick={onPrevious}>
-        <div className='arrow left'>&lt;</div>
+        <button
+          className='arrow left'
+          disabled={currentPage === 1}
+          title='display previous page of results'
+        >
+          &lt;
+        </button>
       </li>
 
       {paginationRange.map((pageNumber, index) => {
@@ -56,13 +62,21 @@ export const Pagination = ({
             className='pagination-item'
             onClick={() => onPageChange(pageNumber)}
           >
-            {pageNumber}
+            <button title={`display page ${pageNumber} results`}>
+              {pageNumber}
+            </button>
           </li>
         );
       })}
 
       <li className='pagination-item' onClick={onNext}>
-        <div className='arrow right'>&gt;</div>
+        <button
+          className='arrow right'
+          disabled={currentPage === lastPage}
+          title='display next page of results'
+        >
+          &gt;
+        </button>
       </li>
     </ul>
   );
