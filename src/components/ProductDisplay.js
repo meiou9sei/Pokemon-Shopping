@@ -10,6 +10,20 @@ export default function ProductDisplay({ product, dispatch }) {
     // prevent user from going below 1
     setAmountToAdd((prevCount) => (prevCount <= 1 ? prevCount : prevCount - 1));
   }
+  // fetch product image front and back
+  const [frontImage, setFrontImage] = useState("");
+  const [backImage, setBackImage] = useState("");
+  async function retrievePokemonFBImages(pokemon) {
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`);
+    if (!res.ok) {
+      throw new Error("cannot fetch data");
+    }
+    const data = await res.json();
+    setFrontImage(data.sprites.other["official-artwork"].front_default);
+    setBackImage(data.sprites.other["official-artwork"].back_default);
+  }
+  retrievePokemonFBImages(product);
+
   return (
     <li className='product-listing'>
       {" "}
@@ -17,7 +31,7 @@ export default function ProductDisplay({ product, dispatch }) {
         <h2 className='product-name'>{product.name}</h2>
         <p className='product-price'>${product.price}</p>
       </div>
-      <img src={product.image} alt={product.name} className='product-image' />
+      <img src={frontImage} alt={product.name} className='product-image' />
       <div className='add-to-cart-menu'>
         <button
           className='add-to-cart-button'
