@@ -72,11 +72,37 @@ nav ul {
   align-items: flex-end;
 }
 
-.product-image {
+.image-wrapper {
+  width: 80%;
   align-self: center;
-  width: 200px;
-  min-height: 200px;
+  position: relative;
+}
+
+.product-image {
+  width: 100%;
   object-fit: cover;
+}
+
+.image-wrapper > img:nth-child(1) {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+.image-wrapper:hover > img:nth-child(1) {
+  opacity: 0;
+}
+
+.image-wrapper > img:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.image-wrapper:hover > img:nth-child(2) {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .add-to-cart-menu {
