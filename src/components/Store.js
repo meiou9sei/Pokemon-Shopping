@@ -3,7 +3,7 @@ import ProductDisplay from "./ProductDisplay";
 import { StoreFilter } from "./StoreFilter";
 import { Pagination } from "./Pagination";
 
-let PageSize = 10;
+let PageSize = 20;
 
 export default function Store({ isInventoryLoaded, inventory, dispatch }) {
   // filtering
