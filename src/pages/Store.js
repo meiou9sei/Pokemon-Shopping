@@ -5,7 +5,7 @@ import { Pagination } from "../components/Pagination";
 
 let PageSize = 20;
 
-export default function Store({ isInventoryLoaded, inventory, dispatch }) {
+export default function Store({ isInventoryLoaded, inventory }) {
   // filtering
   const [filter, setFilter] = useState({});
   const [filteredInventory, setFilteredInventory] = useState(inventory);
@@ -56,11 +56,7 @@ export default function Store({ isInventoryLoaded, inventory, dispatch }) {
             (isInventoryLoaded &&
               filteredInventory.length > 0 &&
               currentPageData.map((product) => (
-                <ProductDisplay
-                  key={product.id}
-                  product={product}
-                  dispatch={dispatch}
-                />
+                <ProductDisplay key={product.id} product={product} />
               ))) || (
               <p>Pokemon of specified filter(s) currently unavailable.</p>
             )}
