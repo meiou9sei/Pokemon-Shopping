@@ -11,7 +11,10 @@ import useFetchInventory from "./useFetchInventory";
 import reducer from "./cartLogic";
 
 function App() {
-  const [cart, dispatch] = useReducer(reducer, []);
+  const [cart, dispatch] = useReducer(
+    reducer,
+    JSON.parse(localStorage.getItem("pokstore.userCart")) || []
+  );
   const { isInventoryLoaded, storeInventory } = useFetchInventory();
 
   return (

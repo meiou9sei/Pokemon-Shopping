@@ -6,6 +6,7 @@ export const ACTIONS = {
 
 export default function reducer(state, action) {
   let newQuantity = action.payload.amountToAdd;
+  let newCart = state;
   switch (action.type) {
     case ACTIONS.ADD_ITEM:
       // check if item already exists in cart
@@ -14,7 +15,7 @@ export default function reducer(state, action) {
       );
       // if item doesn't exist, create new item
       if (checkIndex === -1) {
-        return [
+        newCart = [
           ...state,
           {
             id: action.payload.product.id,
@@ -24,10 +25,12 @@ export default function reducer(state, action) {
             quantity: newQuantity,
           },
         ];
+        localStorage.setItem("pokstore.userCart", JSON.stringify(newCart));
+        return newCart;
       }
       // else, update new quantity value and return new state
       newQuantity += state[checkIndex].quantity;
-      return state.map((item) =>
+      newCart = state.map((item) =>
         item.id === action.payload.product.id
           ? {
               id: action.payload.product.id,
@@ -38,9 +41,14 @@ export default function reducer(state, action) {
             }
           : item
       );
+      localStorage.setItem("pokstore.userCart", JSON.stringify(newCart));
+      return newCart;
     case ACTIONS.REMOVE_ITEM:
-      return state.filter((item) => item.id !== action.payload.product.id);
+      newCart = state.filter((item) => item.id !== action.payload.product.id);
+      localStorage.setItem("pokstore.userCart", JSON.stringify(newCart));
+      return newCart;
     case ACTIONS.CLEAR_CART:
+      localStorage.removeItem("pokstore.userCart");
       return [];
     default:
       return state;
