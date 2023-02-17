@@ -25,7 +25,7 @@ export default function reducer(state, action) {
             quantity: newQuantity,
           },
         ];
-        localStorage.setItem("pokstore.userCart", JSON.stringify(newCart));
+        localStorage.setItem("pokestore.userCart", JSON.stringify(newCart));
         return newCart;
       }
       // else, update new quantity value and return new state
@@ -41,14 +41,14 @@ export default function reducer(state, action) {
             }
           : item
       );
-      localStorage.setItem("pokstore.userCart", JSON.stringify(newCart));
+      localStorage.setItem("pokestore.userCart", JSON.stringify(newCart));
       return newCart;
     case ACTIONS.REMOVE_ITEM:
       newCart = state.filter((item) => item.id !== action.payload.product.id);
-      localStorage.setItem("pokstore.userCart", JSON.stringify(newCart));
+      localStorage.setItem("pokestore.userCart", JSON.stringify(newCart));
       return newCart;
     case ACTIONS.CLEAR_CART:
-      localStorage.removeItem("pokstore.userCart");
+      localStorage.removeItem("pokestore.userCart");
       return [];
     default:
       return state;
