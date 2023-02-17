@@ -11,10 +11,17 @@ import useFetchInventory from "./useFetchInventory";
 import reducer from "./cartLogic";
 
 function App() {
-  const [cart, dispatch] = useReducer(
-    reducer,
-    JSON.parse(localStorage.getItem("pokstore.userCart")) || []
-  );
+  // check localStorage if userCart exists
+  let localCart;
+  try {
+    localCart = JSON.parse(localStorage.getItem("pokestore.userCart"));
+  } catch (error) {
+    const localCartError = new Error("Error fetching cart from localStorage");
+    console.log(localCartError);
+    console.log(error);
+  }
+
+  const [cart, dispatch] = useReducer(reducer, localCart || []);
   const { isInventoryLoaded, storeInventory } = useFetchInventory();
 
   return (
