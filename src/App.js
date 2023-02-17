@@ -2,9 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import { useReducer } from "react";
 
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Store from "./components/Store";
-import Checkout from "./components/Checkout";
+import Home from "./pages/Home";
+import Store from "./pages/Store";
+import Checkout from "./pages/Checkout";
 import Footer from "./components/Footer";
 
 import useFetchInventory from "./useFetchInventory";

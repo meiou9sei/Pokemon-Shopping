@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
-import ProductDisplay from "./ProductDisplay";
-import { StoreFilter } from "./StoreFilter";
-import { Pagination } from "./Pagination";
+import ProductDisplay from "../components/ProductDisplay";
+import { StoreFilter } from "../components/StoreFilter";
+import { Pagination } from "../components/Pagination";
 
 let PageSize = 20;
 
