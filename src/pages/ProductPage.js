@@ -33,7 +33,10 @@ export const ProductPage = ({ inventory, dispatch, isInventoryLoaded }) => {
       flavor_text: dataPokemonSpecies.flavor_text_entries.findLast(
         (flavorText) => flavorText.language.name === "en"
       ).flavor_text,
-      images: {},
+      images: {
+        frontDefault:
+          dataPokemon.sprites.other["official-artwork"].front_default,
+      },
     });
     setIsProductLoaded(true);
   }
@@ -50,10 +53,22 @@ export const ProductPage = ({ inventory, dispatch, isInventoryLoaded }) => {
     <div className='product-page'>
       {(isProductLoaded && (
         <div className='product-wrapper'>
+          <div className='product-images'>
+            <div className='product-images-gallery'></div>
+            <div className='product-image-display'>
+              {
+                <img
+                  src={productDetails.images.frontDefault}
+                  alt={`${product.name} front default image`}
+                />
+              }
+            </div>
+          </div>
           <div className='product-info'>
             <div className='product-title'>
               <h1 className='product-name'>{product.name}</h1>
               <p className='product-id'>{product.id}</p>
+              <p className='product-price'>${product.price}</p>
             </div>
             <div className='product-description'>
               <p className='product-generation'>{productDetails.generation}</p>
