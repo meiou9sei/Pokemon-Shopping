@@ -38,7 +38,7 @@ export default function Store({ isInventoryLoaded, inventory }) {
 
   useEffect(() => {
     setInventoryCount(inventory.length);
-  }, isInventoryLoaded);
+  }, [isInventoryLoaded]);
 
   // pagination
   const [currentPage, setCurrentPage] = useState(1);
