@@ -2,13 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import { useReducer } from "react";
 
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Store from "./components/Store";
-import Checkout from "./components/Checkout";
+import Home from "./pages/Home";
+import Store from "./pages/Store";
+import Checkout from "./pages/Checkout";
 import Footer from "./components/Footer";
 
 import useFetchInventory from "./useFetchInventory";
 import reducer from "./cartLogic";
+import { ProductPage } from "./pages/ProductPage";
 
 function App() {
   // check localStorage if userCart exists
@@ -22,7 +23,8 @@ function App() {
   }
 
   const [cart, dispatch] = useReducer(reducer, localCart || []);
-  const { isInventoryLoaded, storeInventory } = useFetchInventory();
+  const { isInventoryLoaded, storeInventory, inventoryCount } =
+    useFetchInventory();
 
   return (
     <div className='App'>
@@ -37,8 +39,17 @@ function App() {
                 <Store
                   isInventoryLoaded={isInventoryLoaded}
                   inventory={storeInventory}
-                  cart={cart}
+                />
+              }
+            />
+            <Route
+              path='/store/products/:productId'
+              element={
+                <ProductPage
+                  isInventoryLoaded={isInventoryLoaded}
+                  inventory={storeInventory}
                   dispatch={dispatch}
+                  inventoryCount={inventoryCount}
                 />
               }
             />

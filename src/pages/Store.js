@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useMemo } from "react";
-import ProductDisplay from "./ProductDisplay";
-import { StoreFilter } from "./StoreFilter";
-import { Pagination } from "./Pagination";
+import ProductDisplay from "../components/ProductDisplay";
+import { StoreFilter } from "../components/StoreFilter";
+import { Pagination } from "../components/Pagination";
 
 let PageSize = 20;
 
-export default function Store({ isInventoryLoaded, inventory, dispatch }) {
+export default function Store({ isInventoryLoaded, inventory }) {
   // filtering
   const [filter, setFilter] = useState({});
   const [filteredInventory, setFilteredInventory] = useState(inventory);
+  const [inventoryCount, setInventoryCount] = useState(0);
   useEffect(
     function filterInventoryDisplay() {
       let filterExists = false;
@@ -35,6 +36,10 @@ export default function Store({ isInventoryLoaded, inventory, dispatch }) {
     [isInventoryLoaded, filter]
   );
 
+  useEffect(() => {
+    setInventoryCount(inventory.length);
+  }, [isInventoryLoaded]);
+
   // pagination
   const [currentPage, setCurrentPage] = useState(1);
   const currentPageData = useMemo(() => {
@@ -59,7 +64,7 @@ export default function Store({ isInventoryLoaded, inventory, dispatch }) {
                 <ProductDisplay
                   key={product.id}
                   product={product}
-                  dispatch={dispatch}
+                  inventoryCount={inventoryCount}
                 />
               ))) || (
               <p>Pokemon of specified filter(s) currently unavailable.</p>

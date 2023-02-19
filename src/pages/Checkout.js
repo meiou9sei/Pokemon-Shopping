@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ACTIONS } from "../cartLogic";
-import CheckoutItem from "./CheckoutItem";
+import CheckoutItem from "../components/CheckoutItem";
 
 export default function Checkout({ cart, dispatch }) {
   const [totalPrice, setTotalPrice] = useState(calculateTotalPrice());

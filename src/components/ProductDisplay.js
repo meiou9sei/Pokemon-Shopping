@@ -1,15 +1,7 @@
 import { useState } from "react";
-import { ACTIONS } from "../cartLogic";
+import { Link } from "react-router-dom";
 
-export default function ProductDisplay({ product, dispatch }) {
-  const [amountToAdd, setAmountToAdd] = useState(1);
-  function incrementCount() {
-    setAmountToAdd((prevCount) => prevCount + 1);
-  }
-  function decrementCount() {
-    // prevent user from going below 1
-    setAmountToAdd((prevCount) => (prevCount <= 1 ? prevCount : prevCount - 1));
-  }
+export default function ProductDisplay({ product }) {
   // fetch product image default and shiny
   const [defaultImage, setDefaultImage] = useState("");
   const [shinyImage, setShinyImage] = useState("");
@@ -26,44 +18,24 @@ export default function ProductDisplay({ product, dispatch }) {
 
   return (
     <li className='product-listing'>
-      <div className='product-header'>
-        <h2 className='product-name'>{product.name}</h2>
-        <p className='product-price'>${product.price}</p>
-      </div>
-      <div className='image-wrapper'>
-        <img
-          src={defaultImage}
-          alt={product.name}
-          className='product-image image-base'
-        />
-        <img
-          src={shinyImage}
-          alt={`shiny ${product.name}`}
-          className='product-image image-hover'
-        />
-      </div>
-      <div className='add-to-cart-menu'>
-        <button
-          className='add-to-cart-button'
-          onClick={() =>
-            dispatch({
-              type: ACTIONS.ADD_ITEM,
-              payload: { product, amountToAdd },
-            })
-          }
-        >
-          Add to cart
-        </button>
-        <div className='amount-to-add'>
-          <button className='less' onClick={decrementCount}>
-            -
-          </button>
-          {amountToAdd}
-          <button className='more' onClick={incrementCount}>
-            +
-          </button>
+      <Link to={`/store/products/${product.id}`}>
+        <div className='product-header'>
+          <h2 className='product-name'>{product.name}</h2>
+          <p className='product-price'>${product.price}</p>
         </div>
-      </div>
+        <div className='image-wrapper'>
+          <img
+            src={defaultImage}
+            alt={product.name}
+            className='product-image image-base'
+          />
+          <img
+            src={shinyImage}
+            alt={`shiny ${product.name}`}
+            className='product-image image-hover'
+          />
+        </div>
+      </Link>
     </li>
   );
 }
