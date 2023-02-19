@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Store from "./pages/Store";
 import Checkout from "./pages/Checkout";
 import Footer from "./components/Footer";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
 import useFetchInventory from "./useFetchInventory";
 import reducer from "./cartLogic";
@@ -57,6 +58,7 @@ function App() {
               path='/cart'
               element={<Checkout cart={cart} dispatch={dispatch} />}
             />
+            <Route path='*' element={<NotFoundPage />}></Route>
           </Routes>
         </div>
       </main>
