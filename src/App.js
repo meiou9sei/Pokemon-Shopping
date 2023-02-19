@@ -44,7 +44,11 @@ function App() {
             <Route
               path='/store/products/:productId'
               element={
-                <ProductPage inventory={storeInventory} dispatch={dispatch} />
+                <ProductPage
+                  isInventoryLoaded={isInventoryLoaded}
+                  inventory={storeInventory}
+                  dispatch={dispatch}
+                />
               }
             />
             <Route
