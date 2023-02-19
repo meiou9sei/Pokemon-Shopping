@@ -23,7 +23,8 @@ function App() {
   }
 
   const [cart, dispatch] = useReducer(reducer, localCart || []);
-  const { isInventoryLoaded, storeInventory } = useFetchInventory();
+  const { isInventoryLoaded, storeInventory, inventoryCount } =
+    useFetchInventory();
 
   return (
     <div className='App'>
@@ -48,6 +49,7 @@ function App() {
                   isInventoryLoaded={isInventoryLoaded}
                   inventory={storeInventory}
                   dispatch={dispatch}
+                  inventoryCount={inventoryCount}
                 />
               }
             />
