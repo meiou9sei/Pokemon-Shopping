@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import { SearchProduct } from "./SearchProduct";
+import { useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({ inventory, isInventoryLoaded }) {
+  const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
   return (
     <nav>
       <div className='nav-content-wrapper'>
@@ -16,8 +19,24 @@ export default function Navbar() {
           <li>
             <Link to='/cart'>Cart</Link>
           </li>
+          <li>
+            <button
+              onClick={() => {
+                setIsSearchBarVisible(!isSearchBarVisible);
+              }}
+            >
+              ClickToSearch
+            </button>
+          </li>
         </ul>
       </div>
+      {isSearchBarVisible && (
+        <SearchProduct
+          inventory={inventory}
+          isInventoryLoaded={isInventoryLoaded}
+          setIsSearchBarVisible={setIsSearchBarVisible}
+        />
+      )}
     </nav>
   );
 }

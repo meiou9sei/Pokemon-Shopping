@@ -1,23 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function ProductDisplay({ product }) {
-  // fetch product image default and shiny
   const [defaultImage, setDefaultImage] = useState("");
   const [shinyImage, setShinyImage] = useState("");
-  async function retrievePokemonFBImages(pokemon) {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`);
-    if (!res.ok) {
-      throw new Error("cannot fetch data");
+  useEffect(() => {
+    // fetch product image default and shiny
+    async function retrievePokemonFBImages(pokemon) {
+      const res = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemon.id}`
+      );
+      if (!res.ok) {
+        throw new Error("cannot fetch data");
+      }
+      const data = await res.json();
+      setDefaultImage(data.sprites.other["official-artwork"].front_default);
+      setShinyImage(data.sprites.other["official-artwork"].front_shiny);
     }
-    const data = await res.json();
-    setDefaultImage(data.sprites.other["official-artwork"].front_default);
-    setShinyImage(data.sprites.other["official-artwork"].front_shiny);
-  }
-  retrievePokemonFBImages(product);
+    retrievePokemonFBImages(product);
+  }, [product]);
 
   return (
-    <li className='product-listing'>
+    <div className='product-listing'>
       <Link to={`/store/products/${product.id}`}>
         <div className='product-header'>
           <h2 className='product-name'>{product.name}</h2>
@@ -36,6 +40,6 @@ export default function ProductDisplay({ product }) {
           />
         </div>
       </Link>
-    </li>
+    </div>
   );
 }
