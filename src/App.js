@@ -6,11 +6,11 @@ import Home from "./pages/Home";
 import Store from "./pages/Store";
 import Checkout from "./pages/Checkout";
 import Footer from "./components/Footer";
+import { ProductPage } from "./pages/ProductPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
 import useFetchInventory from "./useFetchInventory";
 import reducer from "./cartLogic";
-import { ProductPage } from "./pages/ProductPage";
 
 function App() {
   // check localStorage if userCart exists
@@ -30,7 +30,11 @@ function App() {
   return (
     <div className='App'>
       <main>
-        <Navbar />
+        <Navbar
+          inventory={storeInventory}
+          isInventoryLoaded={isInventoryLoaded}
+          inventoryCount={inventoryCount}
+        />
         <div className='page-wrapper'>
           <Routes>
             <Route path='/' element={<Home />} />

@@ -3,7 +3,11 @@ import React from "react";
 import { SearchProduct } from "./SearchProduct";
 import { useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({
+  inventory,
+  isInventoryLoaded,
+  inventoryCount,
+}) {
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
   return (
     <nav>
@@ -30,7 +34,13 @@ export default function Navbar() {
           </li>
         </ul>
       </div>
-      {isSearchBarVisible && <SearchProduct />}
+      {isSearchBarVisible && (
+        <SearchProduct
+          inventory={inventory}
+          isInventoryLoaded={isInventoryLoaded}
+          inventoryCount={inventoryCount}
+        />
+      )}
     </nav>
   );
 }
