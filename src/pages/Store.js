@@ -61,11 +61,12 @@ export default function Store({ isInventoryLoaded, inventory }) {
             (isInventoryLoaded &&
               filteredInventory.length > 0 &&
               currentPageData.map((product) => (
-                <ProductDisplay
-                  key={product.id}
-                  product={product}
-                  inventoryCount={inventoryCount}
-                />
+                <li key={product.id}>
+                  <ProductDisplay
+                    product={product}
+                    inventoryCount={inventoryCount}
+                  />
+                </li>
               ))) || (
               <p>Pokemon of specified filter(s) currently unavailable.</p>
             )}

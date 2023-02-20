@@ -1,13 +1,22 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import ProductDisplay from "./ProductDisplay";
 
 export const SearchProduct = ({
   isInventoryLoaded,
   inventory,
-  inventoryCount,
+  setIsSearchBarVisible,
 }) => {
   const [sortedInventory, setSortedInventory] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    setSortedInventory(inventory);
+  }, [isInventoryLoaded]);
+
+  useEffect(() => {
+    setSortedInventory(inventory.sort(sortProductsAlphabetically));
+  }, [isInventoryLoaded]);
 
   function sortProductsAlphabetically(a, b) {
     if (a.name < b.name) {
@@ -19,13 +28,14 @@ export const SearchProduct = ({
     return 0;
   }
 
-  useEffect(() => {
-    setSortedInventory(inventory);
-  }, [isInventoryLoaded]);
+  function clearClickToSearch() {
+    setSearchTerm("");
+    hideSearchBar();
+  }
 
-  useEffect(() => {
-    setSortedInventory(inventory.sort(sortProductsAlphabetically));
-  }, [isInventoryLoaded]);
+  function hideSearchBar() {
+    setIsSearchBarVisible(false);
+  }
 
   return (
     <div className='search-product-bar'>
@@ -51,8 +61,15 @@ export const SearchProduct = ({
               .slice(0, 4)
               .map((item) => {
                 return (
-                  <li className='search-result-item' key={item.id}>
-                    {item.name}
+                  <li
+                    className='result-product-wrapper'
+                    key={item.id}
+                    onClick={clearClickToSearch}
+                  >
+                    <ProductDisplay
+                      className='search-result-item'
+                      product={item}
+                    />
                   </li>
                 );
               })}

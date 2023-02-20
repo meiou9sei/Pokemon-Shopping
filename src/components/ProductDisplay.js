@@ -17,7 +17,7 @@ export default function ProductDisplay({ product }) {
   retrievePokemonFBImages(product);
 
   return (
-    <li className='product-listing'>
+    <div className='product-listing'>
       <Link to={`/store/products/${product.id}`}>
         <div className='product-header'>
           <h2 className='product-name'>{product.name}</h2>
@@ -36,6 +36,6 @@ export default function ProductDisplay({ product }) {
           />
         </div>
       </Link>
-    </li>
+    </div>
   );
 }

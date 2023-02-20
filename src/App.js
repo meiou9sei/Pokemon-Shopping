@@ -33,7 +33,6 @@ function App() {
         <Navbar
           inventory={storeInventory}
           isInventoryLoaded={isInventoryLoaded}
-          inventoryCount={inventoryCount}
         />
         <div className='page-wrapper'>
           <Routes>
