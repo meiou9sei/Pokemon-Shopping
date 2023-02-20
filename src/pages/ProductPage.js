@@ -57,7 +57,7 @@ export const ProductPage = ({
     if (Object.keys(product).length) {
       retrievePokemonDetails(product);
     }
-  }, [isInventoryLoaded, isValidProductId, product]);
+  }, [isInventoryLoaded, isValidProductId, product, productId]);
 
   return (
     <div className='product-page'>

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import ProductDisplay from "./ProductDisplay";
+import { Link } from "react-router-dom";
 
 export const SearchProduct = ({
   isInventoryLoaded,
@@ -56,7 +57,8 @@ export const SearchProduct = ({
       <div className='search-results-container'>
         <div className='search-bar-top'>
           <p className='results-count'>
-            {filteredSortedInventory.length} result(s)
+            {filteredSortedInventory.length > 0 &&
+              `${filteredSortedInventory.length} result(s)`}
           </p>
         </div>
         <div className='search-bar-bottom'>
