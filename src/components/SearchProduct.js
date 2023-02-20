@@ -37,15 +37,6 @@ export const SearchProduct = ({
     return 0;
   }
 
-  function clearClickToSearch() {
-    setSearchTerm("");
-    hideSearchBar();
-  }
-
-  function hideSearchBar() {
-    setIsSearchBarVisible(false);
-  }
-
   return (
     <div className='search-product-bar'>
       <input
@@ -67,7 +58,7 @@ export const SearchProduct = ({
                 <li
                   className='result-product-wrapper'
                   key={item.id}
-                  onClick={clearClickToSearch}
+                  onClick={() => setIsSearchBarVisible(false)}
                 >
                   <ProductDisplay
                     className='search-result-item'

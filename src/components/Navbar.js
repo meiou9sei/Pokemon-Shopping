@@ -11,13 +11,19 @@ export default function Navbar({ inventory, isInventoryLoaded }) {
         <p>broke pokemart</p>
         <ul>
           <li>
-            <Link to='/'>Home</Link>
+            <Link to='/' onClick={() => setIsSearchBarVisible(false)}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to='/store'>Store</Link>
+            <Link to='/store' onClick={() => setIsSearchBarVisible(false)}>
+              Store
+            </Link>
           </li>
           <li>
-            <Link to='/cart'>Cart</Link>
+            <Link to='/cart' onClick={() => setIsSearchBarVisible(false)}>
+              Cart
+            </Link>
           </li>
           <li>
             <button
