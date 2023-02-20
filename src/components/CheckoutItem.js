@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function CheckoutItem({ product, dispatch, ACTIONS }) {
   // fetch product image
@@ -15,8 +16,16 @@ export default function CheckoutItem({ product, dispatch, ACTIONS }) {
 
   return (
     <li className='cart-item'>
-      <h3 className='cart-item-name'>{product.name}</h3>
-      <img src={defaultImage} alt={product.name} className='cart-item-image' />
+      <Link to={`/store/products/${product.id}`}>
+        <h3 className='cart-item-name'>{product.name}</h3>
+      </Link>
+      <Link to={`/store/products/${product.id}`}>
+        <img
+          src={defaultImage}
+          alt={product.name}
+          className='cart-item-image'
+        />
+      </Link>
       <p>
         {product.quantity} at ${product.price} each
       </p>
