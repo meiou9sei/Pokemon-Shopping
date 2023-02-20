@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import ProductDisplay from "./ProductDisplay";
-import { Link } from "react-router-dom";
 
 export const SearchProduct = ({
   isInventoryLoaded,
