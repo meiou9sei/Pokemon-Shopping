@@ -4,7 +4,7 @@ Live demo: http://meiou9sei.github.io/Pokemon-Shopping
 
 ## Tech
 
-- HTML & CSS (CSS Animations)
+- HTML & CSS (CSS Animations - to be implemented)
 - SASS
 - Javascript
 - React
@@ -12,7 +12,7 @@ Live demo: http://meiou9sei.github.io/Pokemon-Shopping
 
 ## About
 
-Initially built as part of the [TOP Curriculum](https://www.theodinproject.com/lessons/node-path-javascript-shopping-cart) as a simple React Router practice app, later repurposed to improve my CSS Animations capabilities with a focus on beautiful animations, responsive design, and improved user experience.
+Initially built as part of the [TOP Curriculum](https://www.theodinproject.com/lessons/node-path-javascript-shopping-cart) as a simple React Router practice app
 
 ## Highlights
 
